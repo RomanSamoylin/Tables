@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript" src=
+"https://canvasjs.com/assets/script/canvasjs.min.js">
+    </script>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1 style="color:rgb(238, 128, 25)">БАЛТ-СИСТЕМ</h1>
+        <h3>Система мониторинга </h3>
+    </div>
+    <div id="chartID" 
+         style="height:750px; max-width:1250px; 
+            margin:0px auto;">
+    </div> 
+    <script>
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartID", {
+                
+                title:{
+                    text: 
+        "График загрузки первого квартала"
+                },
+                
+                axisY:{
+                    title: "Загрузка станков в часах"                    
+                },    
+                                
+                data: [
+                {
+                    type: "column",
+                    showInLegend: true,
+                    name:"Станок-1",
+                    color:"green",
+                    toolTipContent:
+        "<b>Работа {name}</b> за {label}:<br> {y}",
+                    dataPoints: [                    
+                        { label:"Январь", y:150 },
+                        { label:"Февраль", y:255},
+                        { label:"Март", y:189},
+                        { label: "Апрель", y:190}                                
+                
+                    ]// end dataPoints
+                },
+                {
+                    type: "column",
+                    showInLegend: true,
+                    name:"Станок-2",
+                    color:"blue",
+                    toolTipContent:
+        "<b>Работа {name}</b> за {label}:<br> {y}",
+                    dataPoints: [                    
+                    { label:"Январь", y:110 },
+                        { label:"Февраль", y:155},
+                        { label:"Март", y:130},
+                        { label: "Апрель", y:120}                                          
+                    ]// end dataPoints
+                },
+                {
+                    type: "column",
+                    showInLegend: true,
+                    name: "Станок-3",
+                    color:"brown",
+                    toolTipContent:
+        "<b>Работа {name}</b> за {label}:<br> {y}",
+                    dataPoints: [                    
+                    { label:"Январь", y:100 },
+                        { label:"Февраль", y:250},
+                        { label:"Март", y:129},
+                        { label: "Апрель", y:150}                          
+                    ]// end dataPoints                    
+                },
+                {
+                    type: "column",
+                    showInLegend: true,
+                    name:"Станок-4",
+                    toolTipContent:
+       "<b>Работа {name}</b> за {label}:<br> {y}",
+                    color:"grey",
+                    dataPoints: [                    
+                        { label:"Январь", y:190 },
+                        { label:"Февраль", y:225},
+                        { label:"Март", y:159},
+                        { label: "Апрель", y:160}             
+                        
+                    ]// end dataPoints                
+                }
+                ]// end data
+            });
+            chart.render();
+        }// window onload
+    </script>
+</body>
+</html>
