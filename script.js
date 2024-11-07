@@ -5,7 +5,7 @@ let myChart = new Chart(ctx, {
     data: {
         labels: ['Точка 1', 'Точка 2', 'Точка 3', 'Точка 4', 'Точка 5', 'Точка 6'], // Имя для каждой точки на оси x
         datasets: [{
-            label: 'Скорость вращения валка', // Имя для графика
+            label: 'Скорость вращения шпинделя', // Имя для графика
             data: spindleSpeeds, // Данные для графика
             borderColor: 'rgba(75, 192, 192, 1)', // Цвет границы линии
             fill: false // Разрешить заливку между точками
@@ -25,7 +25,7 @@ let myChart = new Chart(ctx, {
                 display: true, // Показать ось y
                 scaleLabel: { // Показать метки для оси y
                     display: true,
-                    labelString: 'Скорость вращения валка (rpm)'
+                    labelString: 'Скорость вращения шпинделя (rpm)'
                 }
             }
         }
