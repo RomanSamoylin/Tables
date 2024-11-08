@@ -21,7 +21,7 @@ const chart = new Chart(document.getElementById('myChart'), {
 
 // Update the chart with parsed data
 const parseData = (data) => {
-    const states = [1];
+    const states = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,];
     let currentState = null;
 
     data.forEach((line) => {
