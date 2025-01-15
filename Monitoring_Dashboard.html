@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNC Monitoring Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 80%; margin: auto;">
+        <canvas id="spindleSpeedChart"></canvas>
+        <canvas id="feedRateChart"></canvas>
+    </div>
+
+    <script>
+    // Функция для получения данных с сервера
+    async function fetchData(endpoint) {
+        const response = await fetch(`/api/${endpoint}`);
+        return await response.json();
+    }
+
+    // Графики
+    async function createSpindleSpeedChart() {
+        const data = await fetchData('spindle-speed');
+        
+        new Chart(document.getElementById('spindleSpeedChart'), {
+            type: 'line',
+            data: {
+                labels: data.map(item => item.timestamp),
+                datasets: [{
+                    label: 'Скорость шпинделя (об/мин)',
+                    data: data.map(item => item.speed),
+                    borderColor: 'blue',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Динамика скорости шпинделя'
+                }
+            }
+        });
+    }
+
+    async function createFeedRateChart() {
+        const data = await fetchData('feed-rate');
+        
+        new Chart(document.getElementById('feedRateChart'), {
+            type: 'line',
+            data: {
+                labels: data.map(item => item.timestamp),
+                datasets: [{
+                    label: 'Скорость подачи',
+                    data: data.map(item => item.feed_rate),
+                    borderColor: 'green',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Динамика скорости подачи'
+                }
+            }
+        });
+    }
+
+    // Инициализация графиков
+    createSpindleSpeedChart();
+    createFeedRateChart();
+    </script>
+</body>
+</html>
