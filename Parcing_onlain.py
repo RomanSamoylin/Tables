@@ -4,7 +4,7 @@ def get_data_from_ARMDMonitor():
     connection_string = 'DRIVER={MySQL ODBC 8.0 Unicode Driver};SERVER=127.0.0.1;DATABASE=cnc_monitoring;UID=root;PWD=victoria123;PORT=3306'
     conn = pyodbc.connect(connection_string)
     cursor = conn.cursor()
-    query = "SELECT * FROM YOUR_TABLE_NAME"
+    query = "SELECT * FROM feeddata"
     cursor.execute(query)
     data = cursor.fetchall()
     conn.close()
